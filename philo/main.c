@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:54:51 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/16 12:10:27 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/16 14:00:01 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 int	x = 0;
 pthread_mutex_t	mutex;
 
+#include <time.h>
+
 void	*routine()
 {
 	printf("test of a new thread pid%d\n", getpid());
@@ -36,10 +38,25 @@ void	*routine()
 	return (NULL);
 }
 
+void	*roll_dice()
+{
+	int	value = rand() % 6 + 1;
+	int	*res = (int *)malloc(sizeof(int) * 1);
+	*res = value;
+	printf("value:%d\n", value);
+	return ((void *)res);
+}
+
+
 int	main(int ac, char **av)
 {
-	t_app a;
+	t_app		a;
+	pthread_t	t[a.philo_count];
+	int			i;
+	int			*res;
 	
+	srand(time(NULL));
+	// input validation
 	if (ac > 6 || ac < 5)
 		return (1);
 	if(ft_safe_atoi(&a.philo_count, av[1]) + ft_safe_atoi(&a.ttdie, av[2]) 
@@ -48,28 +65,26 @@ int	main(int ac, char **av)
 	if (ac == 6)
 		if (ft_safe_atoi(&a.meals, av[5]))
 			return (1);
-	
-	pthread_t	t[a.philo_count];
-
+	// end input validation
 	if (pthread_mutex_init(&mutex, NULL))
 		return (1);
-
 	print_app(&a);
-	int	i;
 
 	i = -1;
 	while (++i < a.philo_count)
 	{
-		if (pthread_create(t + i, NULL, &routine, NULL))
+		if (pthread_create(t + i, NULL, &roll_dice, NULL))
 			return (1);
 		printf("thread:%d started\n", i);
 	}
 	i = -1;
 	while (++i < a.philo_count)
 	{
-		if (pthread_join(t[i], NULL))
+		if (pthread_join(t[i], (void **) &res))
 			return (2);
-		printf("thread:%d has finished\n", i);
+		printf("thread:%d has finished with:%d\n", i, *res);
+		free(res);
+		res = NULL;
 	}
 	
 	if (pthread_mutex_destroy(&mutex))
