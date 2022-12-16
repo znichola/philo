@@ -6,13 +6,13 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 22:18:31 by znichola          #+#    #+#              #
-#    Updated: 2022/12/16 00:33:13 by znichola         ###   ########.fr        #
+#    Updated: 2022/12/16 03:48:22 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	philo
 
-FILES	=	main 
+FILES	=	main debug safe_atoi
 
 SRC		=	$(addsuffix .c, $(FILES))
 OBJ		= 	$(SRC:.c=.o)
@@ -24,7 +24,8 @@ INC_PAR	=	$(addprefix -I, $(INCLUDE))
 
 CC 		=	gcc
 # CFLAGS	=	-Wall -Werror -Wextra
-CFLAGS	=	-g
+CFLAGS	=	-g -pthread
+# CFLAGS	=	-S
 RM		=	rm -f
 
 .c.o :
