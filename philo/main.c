@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:54:51 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/16 14:00:01 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/29 13:23:12 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,12 @@ void	*roll_dice()
 int	main(int ac, char **av)
 {
 	t_app		a;
+	printf("lshdfjkhsd\n");
 	pthread_t	t[a.philo_count];
 	int			i;
 	int			*res;
 	
-	srand(time(NULL));
+	// srand(time(NULL));
 	// input validation
 	if (ac > 6 || ac < 5)
 		return (1);
@@ -68,7 +69,7 @@ int	main(int ac, char **av)
 	// end input validation
 	if (pthread_mutex_init(&mutex, NULL))
 		return (1);
-	print_app(&a);
+	// print_app(&a);
 
 	i = -1;
 	while (++i < a.philo_count)
