@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:54:51 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/29 15:50:18 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/29 19:05:09 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,36 +53,40 @@ int	main(int ac, char **av)
 	t_app		a;
 	int			i;
 	int			*res;
-	
+
 	srand(time(NULL));
 	if (input_check_assign(ac, av, &a))
 		return (FAILURE);
-	
-	pthread_t	t[a.philo_count];
-	if (pthread_mutex_init(&mutex, NULL))
-		return (1);
-	// print_app(&a);
 
-	i = -1;
-	while (++i < a.philo_count)
-	{
-		if (pthread_create(t + i, NULL, &roll_dice, NULL))
-			return (1);
-		printf("thread:%d started\n", i);
-	}
-	i = -1;
-	while (++i < a.philo_count)
-	{
-		if (pthread_join(t[i], (void **) &res))
-			return (2);
-		printf("thread:%d has finished with:%d\n", i, *res);
-		free(res);
-		res = NULL;
-	}
-	
-	if (pthread_mutex_destroy(&mutex))
-		return (1);
-	
-	printf("final x:%d", x);
+	// // mutex stuff
+	// pthread_t	t[a.philo_count];
+	// if (pthread_mutex_init(&mutex, NULL))
+	// 	return (1);
+	// // print_app(&a);
+
+	// i = -1;
+	// while (++i < a.philo_count)
+	// {
+	// 	if (pthread_create(t + i, NULL, &roll_dice, NULL))
+	// 		return (1);
+	// 	printf("thread:%d started\n", i);
+	// }
+	// i = -1;
+	// while (++i < a.philo_count)
+	// {
+	// 	if (pthread_join(t[i], (void **) &res))
+	// 		return (2);
+	// 	printf("thread:%d has finished with:%d\n", i, *res);
+	// 	free(res);
+	// 	res = NULL;
+	// }
+
+	// if (pthread_mutex_destroy(&mutex))
+	// 	return (1);
+	// // end mutex stuff
+
+	init_philos(&a);
+
+	free_philos(&a);
 	return (SUCCESS);
 }
