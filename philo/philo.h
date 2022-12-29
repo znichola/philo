@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:55:22 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/29 18:19:21 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/29 19:33:17 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef enum e_fork
 
 typedef struct s_philo
 {
-	int		number;
+	int		id;
 	int		diet;
 	int		eatt;
 	int		sleept;
@@ -77,10 +77,13 @@ int		ft_safe_atoi(int *n, char *str);
 
 /* debug */
 
-void	print_philo(t_philo *p);
 void	print_app(t_app *a);
 void	print_log(t_app *a);
 
+/* print */
+
+void	print_philo(t_philo *p);
+void	print_all_philos(t_app *a);
 
 
 #endif /* philo */

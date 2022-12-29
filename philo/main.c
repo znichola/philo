@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:54:51 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/29 19:05:09 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/29 19:32:49 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ int	main(int ac, char **av)
 	// // end mutex stuff
 
 	init_philos(&a);
+
+	print_all_philos(&a);
 
 	free_philos(&a);
 	return (SUCCESS);
