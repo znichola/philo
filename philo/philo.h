@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:55:22 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/16 03:04:42 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/29 15:48:51 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,15 @@ typedef struct s_app
 	int	meals;
 }	t_app;
 
-
 /* safe atoi */
 
 int		safe_add(int *a, int b);
 int		safe_multi(int *a, int b);
 int		ft_safe_atoi(int *n, char *str);
+
+/* input */
+
+int	input_check_assign(int ac, char **av, t_app *a);
 
 /* debug */
 

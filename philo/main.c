@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:54:51 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/29 13:23:12 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/29 15:50:18 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,14 @@ void	*roll_dice()
 int	main(int ac, char **av)
 {
 	t_app		a;
-	printf("lshdfjkhsd\n");
-	pthread_t	t[a.philo_count];
 	int			i;
 	int			*res;
 	
-	// srand(time(NULL));
-	// input validation
-	if (ac > 6 || ac < 5)
-		return (1);
-	if(ft_safe_atoi(&a.philo_count, av[1]) + ft_safe_atoi(&a.ttdie, av[2]) 
-		+ ft_safe_atoi(&a.tteat, av[3]) + ft_safe_atoi(&a.ttsleep, av[4]))
-		return (1);
-	if (ac == 6)
-		if (ft_safe_atoi(&a.meals, av[5]))
-			return (1);
-	// end input validation
+	srand(time(NULL));
+	if (input_check_assign(ac, av, &a))
+		return (FAILURE);
+	
+	pthread_t	t[a.philo_count];
 	if (pthread_mutex_init(&mutex, NULL))
 		return (1);
 	// print_app(&a);
