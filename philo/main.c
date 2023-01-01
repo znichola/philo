@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:54:51 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/29 19:32:49 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:41:13 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 
 int	x = 0;
 pthread_mutex_t	mutex;
-
-#include <time.h>
 
 void	*routine()
 {
@@ -46,17 +44,6 @@ void	*roll_dice()
 	printf("value:%d\n", value);
 	return ((void *)res);
 }
-
-
-int	main(int ac, char **av)
-{
-	t_app		a;
-	int			i;
-	int			*res;
-
-	srand(time(NULL));
-	if (input_check_assign(ac, av, &a))
-		return (FAILURE);
 
 	// // mutex stuff
 	// pthread_t	t[a.philo_count];
@@ -85,10 +72,24 @@ int	main(int ac, char **av)
 	// 	return (1);
 	// // end mutex stuff
 
+
+int	main(int ac, char **av)
+{
+	t_app		a;
+	int			i;
+	int			*res;
+
+	srand(time(NULL));
+	if (input_check_assign(ac, av, &a))
+		return (FAILURE);
 	init_philos(&a);
+	// print_all_philos(&a);
+	printf("\n");
+	printf("thread ret:%d\n", thread_philos(&a));
 
-	print_all_philos(&a);
-
+	// printf("join   ret:%d\n", join_philos(&a));
+	usleep(100000);
 	free_philos(&a);
+	pthread_mutex_destroy(&a.mutex);
 	return (SUCCESS);
 }

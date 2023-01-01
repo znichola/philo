@@ -6,13 +6,13 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 22:18:31 by znichola          #+#    #+#              #
-#    Updated: 2022/12/29 19:59:15 by znichola         ###   ########.fr        #
+#    Updated: 2022/12/30 12:08:21 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	philo
 
-FILES	=	main debug2 input init_philo print #safe_atoi
+FILES	=	main debug2 input init_philo print philo #safe_atoi
 
 SRC		=	$(addsuffix .c, $(FILES))
 OBJ		= 	$(SRC:.c=.o)

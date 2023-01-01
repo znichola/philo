@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 16:01:12 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/29 20:12:40 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/30 12:24:54 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	print_philo(t_philo *p)
 		return ;
 	printf("\nphilo_id:\033[36m%d\033[0m  \n", p->id);
 	printf("  die:%-4d  eat:%-4d sleep:%-4d\n", p->diet, p->eatt, p->sleept);
-	printf("meals:%-4d me: %p left:%p diff:%#lx\n", p->meals, p, p->to_left, (unsigned)p - (unsigned)p->to_left);
-	printf("fork_status  my:%-3d  left:%-3d\n",  p->fork_status, p->to_left->fork_status);
+	printf("meals:%-4d me: %p left:%p\n", p->meals, p, p->to_left);
+	printf("fork_status  my:%-3d  left:%-3d\n",  p->x_fork_status, p->to_left->x_fork_status);
 	printf("\n");
 }
 
@@ -33,6 +33,7 @@ void	print_all_philos(t_app *a)
 	while (i++ < a->philo_count)
 	{
 		print_philo(t);
+		printf("\033[1Acan i eat: %s\n", (can_i_eat(t) == SUCCESS ? "yes" : "no" ));
 		t = t->to_left;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 14:07:52 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/29 19:21:45 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/30 11:19:16 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ int	input_check_assign(int ac, char **av, t_app *a)
 			return (3);
 	if (a->philo_count <= 0)
 		return (4);
+	if (pthread_mutex_init(&a->mutex, NULL))
+		return (5);
 	return (SUCCESS);
 }

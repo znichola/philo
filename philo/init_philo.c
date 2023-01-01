@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 16:55:57 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/29 19:59:40 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:44:14 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,82 @@ int	init_philos(t_app *a)
 		t->eatt = a->tteat;
 		t->sleept = a->ttsleep;
 		t->meals = a->meals;
+		t->mutex = &a->mutex;
 		if (i % 2)
-			t->fork_status = dirty;
+			t->x_fork_status = dirty;
 		else
-			t->fork_status = clean;
+			t->x_fork_status = clean;
 		t->to_left = NULL;
 		old = t;
 		// t = t->to_left;
 		// not setting to_left to NULL correctly
 	}
 	old->to_left = a->philo;
+}
+
+	// // mutex stuff
+	// pthread_t	t[a.philo_count];
+	// if (pthread_mutex_init(&mutex, NULL))
+	// 	return (1);
+	// // print_app(&a);
+
+	// i = -1;
+	// while (++i < a.philo_count)
+	// {
+	// 	if (pthread_create(t + i, NULL, &roll_dice, NULL))
+	// 		return (1);
+	// 	printf("thread:%d started\n", i);
+	// }
+	// i = -1;
+	// while (++i < a.philo_count)
+	// {
+	// 	if (pthread_join(t[i], (void **) &res))
+	// 		return (2);
+	// 	printf("thread:%d has finished with:%d\n", i, *res);
+	// 	free(res);
+	// 	res = NULL;
+	// }
+
+	// if (pthread_mutex_destroy(&mutex))
+	// 	return (1);
+	// // end mutex stuff
+void	philo_routine(void *arg)
+{
+	t_philo	*p;
+
+	p = (t_philo *)arg;
+	printf("made a new thread for: %d\n", p->id);
+	// print_philo(p);
+}
+
+int	thread_philos(t_app *a)
+{
+	t_philo	*t;
+	int		i;
+
+	i = 0;
+	t = a->philo;
+	while(i++ < a->philo_count)
+	{
+		if (pthread_create(&t->thread, NULL, &philo_routine , t))
+			return (10);
+		t = t->to_left;
+	}
+	return (0);
+}
+
+int	join_philos(t_app *a)
+{
+	t_philo	*t;
+	int		i;
+
+	i = 0;
+	t = a->philo;
+	while(i++ < a->philo_count)
+	{
+		if (pthread_join(&t->thread, NULL))
+			return (11);
+		t = t->to_left;
+	}
+	return (0);
 }
