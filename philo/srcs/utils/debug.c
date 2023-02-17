@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 02:48:39 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/17 00:21:00 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/17 00:44:51 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	print_app(t_app *a)
 
 void	print_log(t_app *a)
 {
+	(void)a;
 	printf("timestamp_in_ms ");
 	if (1)
 		printf("X has taken a fork\n");

@@ -6,44 +6,69 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 22:18:31 by znichola          #+#    #+#              #
-#    Updated: 2023/02/17 00:19:32 by znichola         ###   ########.fr        #
+#    Updated: 2023/02/17 01:50:11 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+RESET=\033[0m
+BLUE=\033[34m
+RED=\033[31m
+GREEN=\033[32m
+MAGENTA=\033[35m
+YELLOW=\033[33m
+GREY=\033[90m
+JMP_UP=\033[1A
+JMP_STRT=\033[100D
+
 NAME	=	philo
 
-FILES	=	main debug input init_philo print philo safe_atoi
+CC		=	gcc
+CFLAGS	=	-Wall -Wextra
+# CFLAGS	+=	-Werror
+RM		=	rm -r
 
-SRC		=	$(addsuffix .c, $(FILES))
-OBJ		= 	$(SRC:.c=.o)
+# If DEBUG env variable is set, compile with debugging symbols
+# and the compiler's address sanitizer
+ifdef DEBUG
+	CFLAGS	+=	-g3 -fsanitize=address
+endif
 
-INCLUDE	=	philo.h
+INC_PATH	=	includes/
+SRC_PATH	=	srcs/
+OBJ_PATH	=	objs/
 
-INC_PAR	=	$(addprefix -I, $(INCLUDE))
+UTILS		=	debug print safe_atoi
+PHILO		=	input philo init_philo
+
+UTILS		:=	$(addprefix utils/,	$(UTILS))
+PHILO		:=	$(addprefix philo/,	$(PHILO))
 
 
-CC 		=	gcc
-# CFLAGS	=	-Wall -Werror -Wextra
-CFLAGS	=	-g -pthread
-# CFLAGS	=	-S
-RM		=	rm -f
+FILES		=	main $(UTILS) $(PHILO)
 
-.c.o :
-		$(CC) $(CFLAGS) -c $< -o $(@)
+SRCS		=	$(addprefix $(SRC_PATH), $(addsuffix .c, $(FILES)))
+OBJS		=	$(addprefix $(OBJ_PATH), $(addsuffix .o, $(FILES)))
+INCS		=	$(addprefix -I, $(INC_PATH))
 
 all : $(NAME)
 
-$(NAME) : $(OBJ)
-		$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(INC_PAR)
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	@mkdir -p $(@D)
+	@printf "$(GREEN) compiling ..$(GREY) $@$ $(RESET)$(JMP_STRT)"
+	@$(CC) $(CFLAGS) -c $(INCS) -o $@ $<
+#	@printf "$(JMP_UP)$(JMP_UP)"
+
+$(NAME) : $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) $(INCS) -o $@
 
 bonus :
 	@echo "no bonus :("
 
 clean :
-	$(RM) $(OBJ)
+	@$(RM) $(OBJS) 2>/dev/null && printf "$(BLUE).. removed objects\n$(RESET)" || true
 
 fclean : clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME) 2>/dev/null && printf "$(BLUE).. removed $(NAME) binary\n$(RESET)" || true
 
 re : fclean all
 

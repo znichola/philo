@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 16:55:57 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/30 16:44:14 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/17 00:45:29 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	init_philos(t_app *a)
 		// not setting to_left to NULL correctly
 	}
 	old->to_left = a->philo;
+	return (0);
 }
 
 	// // mutex stuff

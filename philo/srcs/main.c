@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:54:51 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/30 16:41:13 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/17 01:39:08 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	*roll_dice()
 int	main(int ac, char **av)
 {
 	t_app		a;
-	int			i;
+	// int			i;
 	int			*res;
 
 	srand(time(NULL));
