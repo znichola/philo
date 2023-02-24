@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:50:13 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 15:30:00 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:29:24 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define SUCCESS 0
 # define FAILURE -1
-# define MALLOC_ERROR 42
+# define FATAL_ERROR 42
 # define FT_INT_MAX 2147483647
 # define FT_INT_MIN -2147483648
 
@@ -31,6 +31,7 @@ enum
 enum
 {
 	e_msg_taken_fork,
+	e_msg_is_eating,
 	e_msg_is_sleeping,
 	e_msg_is_thinking,
 	e_msg_is_dead

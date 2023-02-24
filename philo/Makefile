@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 22:18:31 by znichola          #+#    #+#              #
-#    Updated: 2023/02/24 16:39:13 by znichola         ###   ########.fr        #
+#    Updated: 2023/02/24 19:59:06 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,10 +37,10 @@ INC_PATH	=	includes/
 SRC_PATH	=	srcs/
 OBJ_PATH	=	objs/
 
-CONTROLLER	=	cleanup wait launch
-PHILO		=	input philo init_philo
+CONTROLLER	=	cleanup wait launch prep
+PHILO		=	philo init_philo
 STRUCTS		=	t_philo
-UTILS		=	debug print safe_atoi
+UTILS		=	debug print safe_atoi input
 
 CONTROLLER		:=	$(addprefix controller/, $(CONTROLLER))
 PHILO		:=	$(addprefix philo/, $(PHILO))
@@ -59,7 +59,7 @@ all : format_compiling $(NAME)
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(@D)
 #	@printf "$(GREEN) compiling ..$(GREY) $@$ $(RESET)$(JMP_STRT)"
-	@printf "$(JMP_UP)\e[14C$(GREY) $@$ $(RESET)\n"
+	@printf "$(JMP_UP)\e[14C$(GREY) $@ $(RESET)                             \n"
 	@$(CC) $(CFLAGS) -c $(INCS) -o $@ $<
 #	@printf "$(JMP_UP)$(JMP_UP)"
 

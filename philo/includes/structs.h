@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:01:20 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 16:39:45 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/24 21:10:26 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_philo
 typedef struct s_app
 {
 	int			args[5];
-	t_philo		*philo_table;
+	t_philo		**philo_table;
 }	t_app;
 
 #endif

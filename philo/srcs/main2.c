@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:54:51 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 11:03:00 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:40:35 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,31 +19,31 @@
 // number_of_philosophers time_to_die time_to_eat time_to_sleep
 // [number_of_times_each_philosopher_must_eat]
 
-int	x = 0;
-pthread_mutex_t	mutex;
+// int	x = 0;
+// pthread_mutex_t	mutex;
 
-void	*routine()
-{
-	printf("test of a new thread pid%d\n", getpid());
-	for (int i = 0; i < 1000000; i++)
-	{
-		pthread_mutex_lock(&mutex);
-		x += 1;
-		pthread_mutex_unlock(&mutex);
-	}
-	sleep(3);
-	printf("ending thread x:%d\n", x);
-	return (NULL);
-}
+// void	*routine()
+// {
+// 	printf("test of a new thread pid%d\n", getpid());
+// 	for (int i = 0; i < 1000000; i++)
+// 	{
+// 		pthread_mutex_lock(&mutex);
+// 		x += 1;
+// 		pthread_mutex_unlock(&mutex);
+// 	}
+// 	sleep(3);
+// 	printf("ending thread x:%d\n", x);
+// 	return (NULL);
+// }
 
-void	*roll_dice()
-{
-	int	value = rand() % 6 + 1;
-	int	*res = (int *)malloc(sizeof(int) * 1);
-	*res = value;
-	printf("value:%d\n", value);
-	return ((void *)res);
-}
+// void	*roll_dice()
+// {
+// 	int	value = rand() % 6 + 1;
+// 	int	*res = (int *)malloc(sizeof(int) * 1);
+// 	*res = value;
+// 	printf("value:%d\n", value);
+// 	return ((void *)res);
+// }
 
 	// // mutex stuff
 	// pthread_t	t[a.philo_count];

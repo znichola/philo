@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_passing_values.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:06:57 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 11:54:41 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:25:07 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int	primes[10] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
 
-void	*routine(void *arg)
-{
-	int	index;
+// void	*routine(void *arg)
+// {
+// 	int	index;
 
-	sleep(1);
-	index = *(int*)arg;
-	printf("%d:%d ", index, primes[index]);
-	free(arg);
-	return (NULL);
-}
+// 	sleep(1);
+// 	index = *(int*)arg;
+// 	printf("%d:%d ", index, primes[index]);
+// 	free(arg);
+// 	return (NULL);
+// }
 
 int	main(int argc, char **argv)
 {
