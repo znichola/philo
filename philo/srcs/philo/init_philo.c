@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 16:55:57 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/17 00:45:29 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/24 11:18:29 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	init_philos(t_app *a)
 	// if (pthread_mutex_destroy(&mutex))
 	// 	return (1);
 	// // end mutex stuff
-void	philo_routine(void *arg)
+void	*philo_routine(void *arg)
 {
 	t_philo	*p;
 
@@ -134,7 +134,7 @@ int	join_philos(t_app *a)
 	t = a->philo;
 	while(i++ < a->philo_count)
 	{
-		if (pthread_join(&t->thread, NULL))
+		if (pthread_join(t->thread, NULL))
 			return (11);
 		t = t->to_left;
 	}
