@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 22:18:31 by znichola          #+#    #+#              #
-#    Updated: 2023/02/24 15:44:00 by znichola         ###   ########.fr        #
+#    Updated: 2023/02/24 16:39:13 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,16 +37,18 @@ INC_PATH	=	includes/
 SRC_PATH	=	srcs/
 OBJ_PATH	=	objs/
 
+CONTROLLER	=	cleanup wait launch
 PHILO		=	input philo init_philo
 STRUCTS		=	t_philo
 UTILS		=	debug print safe_atoi
 
+CONTROLLER		:=	$(addprefix controller/, $(CONTROLLER))
 PHILO		:=	$(addprefix philo/, $(PHILO))
-STRUCTS		:=	$(addprefix structs/, $(PHILO))
+STRUCTS		:=	$(addprefix structs/, $(STRUCTS))
 UTILS		:=	$(addprefix utils/, $(UTILS))
 
 
-FILES		=	main $(UTILS) $(PHILO)
+FILES		=	main $(CONTROLLER) $(PHILO) $(STRUCTS) $(UTILS)
 
 SRCS		=	$(addprefix $(SRC_PATH), $(addsuffix .c, $(FILES)))
 OBJS		=	$(addprefix $(OBJ_PATH), $(addsuffix .o, $(FILES)))

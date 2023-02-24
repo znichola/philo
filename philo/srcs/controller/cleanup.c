@@ -1,37 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 14:01:20 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 16:39:45 by znichola         ###   ########.fr       */
+/*   Created: 2023/02/24 15:55:26 by znichola          #+#    #+#             */
+/*   Updated: 2023/02/24 16:31:35 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
+#include "philo.h"
 
-# include <pthread.h>
-# include "defines.h"
-
-typedef struct s_philo
+void	cleanup_philos(t_app *d)
 {
-	pthread_t		my_thread;
-	int				id_number;
-	int				eat_time;
-	int				sleep_time;
-	int				time_to_die;
-	int				meals_left;
-	pthread_mutex_t	fork;
-	struct s_philo	*to_left;
-}	t_philo;
-
-typedef struct s_app
-{
-	int			args[5];
-	t_philo		*philo_table;
-}	t_app;
-
-#endif
+	free(d->philo_table);
+}

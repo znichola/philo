@@ -1,37 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   launch.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 14:01:20 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 16:39:45 by znichola         ###   ########.fr       */
+/*   Created: 2023/02/24 15:48:02 by znichola          #+#    #+#             */
+/*   Updated: 2023/02/24 16:39:58 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
+#include "philo.h"
 
-# include <pthread.h>
-# include "defines.h"
-
-typedef struct s_philo
+int	launch_all_philos(t_app *d)
 {
-	pthread_t		my_thread;
-	int				id_number;
-	int				eat_time;
-	int				sleep_time;
-	int				time_to_die;
-	int				meals_left;
-	pthread_mutex_t	fork;
-	struct s_philo	*to_left;
-}	t_philo;
+	d->philo_table = malloc(sizeof(t_philo) * d->args[e_num_philos]);
+	return (0);
+}
 
-typedef struct s_app
-{
-	int			args[5];
-	t_philo		*philo_table;
-}	t_app;
-
-#endif
+// static	void setup_philos()
+// {
+// 	;
+// }

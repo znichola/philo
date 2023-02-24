@@ -6,11 +6,13 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 16:55:57 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 15:38:38 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:46:15 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+
 
 // void	free_philos(t_app *a)
 // {

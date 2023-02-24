@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:51:14 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 15:25:49 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/24 16:39:33 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,3 @@ t_philo	*philo_factory(t_philo *blueprint)
 		printf("error! use the blueprint when making a philo\n");
 	return (philo);
 }
-
-typedef struct s_philo2
-{
-	int				id_number;
-	int				eat_time;
-	int				sleep_time;
-	int				time_to_die;
-	int				meals_left;
-	pthread_mutex_t	fork;
-	struct s_philo	*to_left;
-}	t_philo2;
