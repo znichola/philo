@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:55:22 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 22:36:29 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 00:03:22 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include "structs.h"
 # include "defines.h"
 
-int      can_i_eat(t_philo *p);
 void     cleanup_philos(t_app *d);
 int      ft_safe_atoi(int *n, char *str);
 int      launch_all_philos(t_app *d);
@@ -37,5 +36,6 @@ int      validate_inputs(int ac, char **av, int args[5]);
 int      wait_all_philos(t_app *d);
 int	prep_all_philos(t_app *d);
 void	thinking(t_philo *p);
+void	philo_sleep(int	sleep_in_ms);
 
 #endif /* philo */

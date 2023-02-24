@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 22:35:51 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 23:43:56 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 00:02:14 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	thinking(t_philo *p)
 static void	eating(t_philo *p)
 {
 	print_log(p->id_number, e_msg_is_eating);
-	usleep(p->eat_time);
+	philo_sleep(p->eat_time);
 	if (p->meals_left != -1)
 		p->meals_left -= 1;
 }

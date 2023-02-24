@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 21:03:49 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 23:30:00 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 00:03:24 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,5 @@ void	*routine(void *philo)
 static void	sleeping(t_philo *p)
 {
 	print_log(p->id_number, e_msg_is_sleeping);
-	usleep(p->sleep_time);
-}
-
-int	can_i_eat(t_philo *p)
-{
-	int	ret;
-
-	ret = SUCCESS;
-	(void)p;
-	return (ret);
+	philo_sleep(p->sleep_time);
 }
