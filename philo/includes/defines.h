@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:50:13 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 19:29:24 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/24 22:41:24 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,10 @@ enum e_fork
 	clean = 1
 };
 
+enum
+{
+	e_not_in_use = 0,
+	e_in_use = 1,
+};
 
 #endif

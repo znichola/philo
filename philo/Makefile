@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 22:18:31 by znichola          #+#    #+#              #
-#    Updated: 2023/02/24 19:59:06 by znichola         ###   ########.fr        #
+#    Updated: 2023/02/24 23:53:22 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ RM		=	rm -r
 # If DEBUG env variable is set, compile with debugging symbols
 # and the compiler's address sanitizer
 ifdef DEBUG
-	CFLAGS	+=	-g3 -fsanitize=address
+#	CFLAGS	+=	-g3 -fsanitize=address
+	CFLAGS	+=	-g3 -fsanitize=thread
 endif
 
 INC_PATH	=	includes/
@@ -38,7 +39,7 @@ SRC_PATH	=	srcs/
 OBJ_PATH	=	objs/
 
 CONTROLLER	=	cleanup wait launch prep
-PHILO		=	philo init_philo
+PHILO		=	philo init_philo thinking
 STRUCTS		=	t_philo
 UTILS		=	debug print safe_atoi input
 
@@ -79,7 +80,7 @@ fclean : clean
 re : fclean all
 
 format_compiling :
-	@printf "$(GREEN)   compiling : $(RESET)\n"
+	@printf "$(GREEN).. compiling : $(RESET)\n"
 
 
 .PHONY : all re clean fclean bonus

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 16:01:12 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 21:08:38 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/24 23:55:07 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ static long long ret_time_in_ms(void);
 
 void	print_log(int id, int msg)
 {
-	printf("%lld %d ", ret_time_in_ms(), id);
+	id += 1;
 	if (msg == e_msg_taken_fork)
-		printf(" has taken a fork\n");
+		printf("%lld %d has taken a fork\n", ret_time_in_ms(), id);
 	else if (msg == e_msg_is_sleeping)
-		printf(" is sleeping\n");
+		printf("%lld %d is sleeping\n", ret_time_in_ms(), id);
 	else if (msg == e_msg_is_eating)
-		printf(" is eating\n");
+		printf("%lld %d is eating\n", ret_time_in_ms(), id);
 	else if (msg == e_msg_is_thinking)
-		printf(" is thinking\n");
+		printf("%lld %d is thinking\n", ret_time_in_ms(), id);
 	else if (msg == e_msg_is_dead)
-		printf(" died\n");
+		printf("%lld %d died\n", ret_time_in_ms(), id);
 }
 
 void	print_philo(t_philo *p)

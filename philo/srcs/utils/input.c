@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 14:07:52 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 15:46:21 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/24 23:27:33 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ int	validate_inputs(int ac, char **av, int args[5])
 		}
 	}
 	else
-		args[4] = 0;
+		args[4] = -1;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:55:22 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 20:00:07 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/24 22:36:29 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int      can_i_eat(t_philo *p);
 void     cleanup_philos(t_app *d);
 int      ft_safe_atoi(int *n, char *str);
 int      launch_all_philos(t_app *d);
-t_philo  *philo_factory(t_philo *blueprint);
+int		philo_factory(t_philo *p, t_philo *blueprint);
 void     print_log(int id, int msg);
 void     print_philo(t_philo *p);
 void     *routine(void *philo);
@@ -36,5 +36,6 @@ int      safe_multi(int *a, int b);
 int      validate_inputs(int ac, char **av, int args[5]);
 int      wait_all_philos(t_app *d);
 int	prep_all_philos(t_app *d);
+void	thinking(t_philo *p);
 
 #endif /* philo */
