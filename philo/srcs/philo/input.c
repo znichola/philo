@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 14:07:52 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 15:27:50 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:44:26 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	validate_inputs(int ac, char **av, int args[5])
 {
 	if (ac != 5 && ac != 6)
 	{
-		printf("\nusage:\n    ./philo ");
+		printf("usage:\n    ./philo ");
 		printf("n_philos time_to_die time_to_eat time_to_sleep [n_of_meals]\n");
 		return (1);
 	}

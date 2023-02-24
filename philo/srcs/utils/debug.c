@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 02:48:39 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 15:33:38 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:36:24 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,3 @@
 // 	printf("        time_to_sleep:%-5d\n", a->ttsleep);
 // 	printf("\n");
 // }
-
-void	print_log(int id, int msg)
-{
-	printf("timestamp_in_ms %d ", id);
-	if (msg = 0)
-		printf(" has taken a fork\n");
-	else if (1)
-		printf(" is sleeping\n");
-	else if (1)
-		printf(" is thinking\n");
-	else if (1)
-		printf(" dead\n");
-}
