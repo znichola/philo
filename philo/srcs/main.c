@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:06:57 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 11:19:19 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/24 11:34:35 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	*routine(void *arg)
 {
 	int	index;
 
+	sleep(10);
 	index = *(int*)arg;
 	printf("%d ", primes[index]);
 }
