@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 22:18:31 by znichola          #+#    #+#              #
-#    Updated: 2023/02/17 01:50:11 by znichola         ###   ########.fr        #
+#    Updated: 2023/02/24 10:53:29 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 #	@printf "$(JMP_UP)$(JMP_UP)"
 
 $(NAME) : $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) $(INCS) -o $@
+	@$(CC) $(CFLAGS) $(OBJS) -pthread $(INCS) -o $@
 
 bonus :
 	@echo "no bonus :("

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 00:41:01 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/16 01:15:21 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/24 10:50:51 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int	safe_multi(int *a, int b)
 
 int	safe_add(int *a, int b)
 {
-	if (a > 0 && b > FT_INT_MAX - *a)
+	if (*a > 0 && b > FT_INT_MAX - *a)
 		return (FAILURE);
-	else if (a < 0 && b < FT_INT_MIN - *a)
+	else if (*a < 0 && b < FT_INT_MIN - *a)
 		return (FAILURE);
 	*a = *a + b;
 	return (SUCCESS);
