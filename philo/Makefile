@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 22:18:31 by znichola          #+#    #+#              #
-#    Updated: 2023/02/24 11:18:55 by znichola         ###   ########.fr        #
+#    Updated: 2023/02/24 14:31:32 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,15 +50,17 @@ SRCS		=	$(addprefix $(SRC_PATH), $(addsuffix .c, $(FILES)))
 OBJS		=	$(addprefix $(OBJ_PATH), $(addsuffix .o, $(FILES)))
 INCS		=	$(addprefix -I, $(INC_PATH))
 
-all : $(NAME)
+all : format_compiling $(NAME)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(@D)
-	@printf "$(GREEN) compiling ..$(GREY) $@$ $(RESET)$(JMP_STRT)"
+#	@printf "$(GREEN) compiling ..$(GREY) $@$ $(RESET)$(JMP_STRT)"
+	@printf "$(JMP_UP)\e[14C$(GREY) $@$ $(RESET)\n"
 	@$(CC) $(CFLAGS) -c $(INCS) -o $@ $<
 #	@printf "$(JMP_UP)$(JMP_UP)"
 
 $(NAME) : $(OBJS)
+	@printf "$(YELLOW).. linking$(RESET)\n"
 	@$(CC) $(CFLAGS) $(OBJS) -pthread $(INCS) -o $@
 
 bonus :
@@ -72,6 +74,45 @@ fclean : clean
 
 re : fclean all
 
+format_compiling :
+	@printf "$(GREEN)   compiling : $(RESET)\n"
+
+
 .PHONY : all re clean fclean bonus
 
 # .SILENT:
+
+MANDETORY_FUNCS	=	memset                \
+					printf                \
+					malloc                \
+					free                  \
+					write                 \
+					usleep                \
+					gettimeofday          \
+					pthread_create        \
+					pthread_detach        \
+					pthread_join          \
+					pthread_mutex_init    \
+					pthread_mutex_destroy \
+					pthread_mutex_lock    \
+					pthread_mutex_unlock  \
+
+BONUS_FUNCS		=	memset                \
+					printf                \
+					malloc                \
+					free                  \
+					write                 \
+					fork                  \
+					kill                  \
+					exit                  \
+					pthread_create        \
+					pthread_detach        \
+					pthread_join          \
+					usleep                \
+					gettimeofday          \
+					waitpid               \
+					sem_open              \
+					sem_close             \
+					sem_post              \
+					sem_wait              \
+					sem_unlink            \
