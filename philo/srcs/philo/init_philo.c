@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 16:55:57 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 11:18:29 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/24 14:14:51 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void	*philo_routine(void *arg)
 	p = (t_philo *)arg;
 	printf("made a new thread for: %d\n", p->id);
 	// print_philo(p);
+	return (NULL);
 }
 
 int	thread_philos(t_app *a)

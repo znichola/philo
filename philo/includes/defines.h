@@ -1,29 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 11:55:41 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 14:46:00 by znichola         ###   ########.fr       */
+/*   Created: 2023/02/24 13:50:13 by znichola          #+#    #+#             */
+/*   Updated: 2023/02/24 14:14:40 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#ifndef DEFINES_H
+# define DEFINES_H
 
-int	main(int argc, char **argv)
+# define SUCCESS 0
+# define FAILURE -1
+# define MALLOC_ERROR 42
+# define FT_INT_MAX 2147483647
+# define FT_INT_MIN -2147483648
+
+enum {
+	e_num_philos = 0,
+	e_time_to_die = 1,
+	e_time_to_eat = 2,
+	e_time_to_sleep = 3,
+	e_n_of_meals = 4,
+};
+
+typedef enum e_bool
 {
-	pthread_t	*philo_threads;
-	t_philo		*philo_table;
-	int			args[5];
+	false = 0,
+	true = 1
+}	t_bool;
 
-	if (validate_inputs(argc, argv, args))
-		return (1);
-	philo_threads = (pthread_t *)malloc(sizeof(pthread_t) * args[e_num_philos]);
-	philo_table = (t_philo *)malloc(sizeof(t_philo) * args[e_num_philos]);
+enum e_fork
+{
+	dirty = -1,
+	clean = 1
+};
 
-	free(philo_threads);
-	free(philo_table);
-	return (0);
-}
+
+#endif
