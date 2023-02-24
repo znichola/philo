@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 16:01:12 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/17 00:20:39 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:34:21 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@
 // 	printf("\n");
 // }
 
-void	print_all_philos(t_app *a)
-{
-	int		i;
-	t_philo	*t;
+// void	print_all_philos(t_app *a)
+// {
+// 	int		i;
+// 	t_philo	*t;
 
-	i = 0;
-	t = a->philo;
-	while (i++ < a->philo_count)
-	{
-		print_philo(t);
-		printf("\033[1Acan i eat: %s\n", (can_i_eat(t) == SUCCESS ? "yes" : "no" ));
-		t = t->to_left;
-	}
-}
+// 	i = 0;
+// 	t = a->philo;
+// 	while (i++ < a->philo_count)
+// 	{
+// 		print_philo(t);
+// 		printf("\033[1Acan i eat: %s\n", (can_i_eat(t) == SUCCESS ? "yes" : "no" ));
+// 		t = t->to_left;
+// 	}
+// }

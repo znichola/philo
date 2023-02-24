@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 22:18:31 by znichola          #+#    #+#              #
-#    Updated: 2023/02/24 14:31:32 by znichola         ###   ########.fr        #
+#    Updated: 2023/02/24 15:06:21 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,11 @@ OBJ_PATH	=	objs/
 
 UTILS		=	debug print safe_atoi
 PHILO		=	input philo init_philo
+STRUCTS		=	t_philo
 
-UTILS		:=	$(addprefix utils/,	$(UTILS))
-PHILO		:=	$(addprefix philo/,	$(PHILO))
+PHILO		:=	$(addprefix philo/, $(PHILO))
+PHILO		:=	$(addprefix structs/, $(PHILO))
+UTILS		:=	$(addprefix utils/, $(UTILS))
 
 
 FILES		=	main $(UTILS) $(PHILO)

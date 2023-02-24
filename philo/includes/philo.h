@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:55:22 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 14:09:03 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:34:35 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 /* philo */
 
-int	can_i_eat(t_philo *p);
+int		can_i_eat(t_philo *p);
 
 /* init_philo */
 
@@ -35,7 +35,7 @@ int		join_philos(t_app *a);
 
 /* input */
 
-int		input_check_assign(int ac, char **av, t_app *a);
+// int		input_check_assign(int ac, char **av, t_app *a);
 int		validate_inputs(int ac, char **av, int args[5]);
 
 /* safe atoi */
@@ -46,13 +46,14 @@ int		ft_safe_atoi(int *n, char *str);
 
 /* debug */
 
-void	print_app(t_app *a);
-void	print_log(t_app *a);
+// void	print_app(t_app *a);
+void	print_log(int id, int msg)
+
 
 /* print */
 
-void	print_philo(t_philo *p);
-void	print_all_philos(t_app *a);
+// void	print_philo(t_philo *p);
+// void	print_all_philos(t_app *a);
 
 
 #endif /* philo */

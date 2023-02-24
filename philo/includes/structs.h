@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:01:20 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 14:08:14 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:12:35 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ typedef struct s_philo
 	struct s_philo	*to_left;
 }	t_philo;
 
-// typedef struct s_philo
-// {
-
-// }
+typedef struct s_philo2
+{
+	int	t;
+}	t_philo2;
 
 typedef struct s_app
 {

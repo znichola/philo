@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:50:13 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 14:14:40 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:30:00 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,21 @@
 # define FT_INT_MAX 2147483647
 # define FT_INT_MIN -2147483648
 
-enum {
+enum
+{
 	e_num_philos = 0,
 	e_time_to_die = 1,
 	e_time_to_eat = 2,
 	e_time_to_sleep = 3,
 	e_n_of_meals = 4,
+};
+
+enum
+{
+	e_msg_taken_fork,
+	e_msg_is_sleeping,
+	e_msg_is_thinking,
+	e_msg_is_dead
 };
 
 typedef enum e_bool
