@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:55:41 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 12:43:05 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 19:38:55 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,7 @@ int	main(int argc, char **argv)
 	cleanup_philos(&data);
 	return (0);
 }
+
+/*
+	awk 'NR == 1 {origin = $1} {$1 = $1 - origin; print}'
+ */

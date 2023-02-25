@@ -6,11 +6,29 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:55:26 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 17:48:34 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 19:47:42 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	wait_all_philos(t_app *d)
+{
+	int		i;
+	t_philo	*tmp;
+
+	i = d->args[e_num_philos];
+	while (--i >= 0)
+	{
+		tmp = &d->philo_table[i];
+		if (pthread_join(tmp->my_thread, NULL))
+			printf("failed to join thread #%d\n", i);
+		// else
+		// 	printf("joined thread #%d\n", i);
+	}
+	return (0);
+}
+
 
 void	cleanup_philos(t_app *d)
 {
