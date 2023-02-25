@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input.c                                            :+:      :+:    :+:   */
+/*   launch.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/29 14:07:52 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/29 15:51:53 by znichola         ###   ########.fr       */
+/*   Created: 2023/02/24 15:48:02 by znichola          #+#    #+#             */
+/*   Updated: 2023/02/24 20:05:48 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	input_check_assign(int ac, char **av, t_app *a)
+static int	launch_philo(t_philo *p);
+
+int	launch_all_philos(t_app *d)
 {
-	if (ac > 6 || ac < 5)
-		return (1);
-	if(ft_safe_atoi(&a->philo_count, av[1]) + ft_safe_atoi(&a->ttdie, av[2]) 
-		+ ft_safe_atoi(&a->tteat, av[3]) + ft_safe_atoi(&a->ttsleep, av[4]))
-		return (2);
-	if (ac == 6)
-		if (ft_safe_atoi(&a->meals, av[5]))
-			return (3);
-	return (SUCCESS);
+	int		i;
+
+	i = d->args[e_num_philos];
+	while (--i >= 0)
+	{
+		if (launch_philo(d->philo_table + i))
+			return (FATAL_ERROR);
+	}
+	return (0);
+}
+
+static int	launch_philo(t_philo *p)
+{
+	if (pthread_create(&p->my_thread, NULL, &routine, p))
+		return (FATAL_ERROR);
+	return (0);
 }

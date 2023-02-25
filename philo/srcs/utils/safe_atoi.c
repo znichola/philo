@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug2.c                                           :+:      :+:    :+:   */
+/*   safe_atoi.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/29 13:09:56 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/29 13:19:49 by znichola         ###   ########.fr       */
+/*   Created: 2022/12/16 00:41:01 by znichola          #+#    #+#             */
+/*   Updated: 2023/02/24 10:50:51 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int	safe_multi(int *a, int b)
 
 int	safe_add(int *a, int b)
 {
-	if (a > 0 && b > FT_INT_MAX - *a)
+	if (*a > 0 && b > FT_INT_MAX - *a)
 		return (FAILURE);
-	else if (a < 0 && b < FT_INT_MIN - *a)
+	else if (*a < 0 && b < FT_INT_MIN - *a)
 		return (FAILURE);
 	*a = *a + b;
 	return (SUCCESS);
@@ -82,12 +82,12 @@ int	ft_safe_atoi(int *n, char *str)
 	s = 1;
 	while (*str == ' ' || *str == '\f' || *str == '\n'
 		|| *str == '\r' || *str == '\t' || *str == '\v')
-		(str)++;
+		(*str)++;
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
 			s = -1;
-		(str)++;
+		str++;
 	}
 	if (!(*str >= '0' && *str <= '9'))
 		return (FAILURE);
@@ -95,7 +95,7 @@ int	ft_safe_atoi(int *n, char *str)
 	{
 		if (!(safe_multi(n, 10) + safe_add(n, *str - '0') == SUCCESS))
 			return (FAILURE);
-		(str)++;
+		str++;
 	}
 	if (!(*str == ' ' || *str == '\0'))
 		return (FAILURE);

@@ -6,47 +6,119 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 22:18:31 by znichola          #+#    #+#              #
-#    Updated: 2022/12/29 15:49:01 by znichola         ###   ########.fr        #
+#    Updated: 2023/02/26 00:04:41 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+RESET=\033[0m
+BLUE=\033[34m
+RED=\033[31m
+GREEN=\033[32m
+MAGENTA=\033[35m
+YELLOW=\033[33m
+GREY=\033[90m
+JMP_UP=\033[1A
+JMP_STRT=\033[100D
+
 NAME	=	philo
 
-FILES	=	main debug2 input #safe_atoi
+CC		=	gcc
+CFLAGS	=	-Wall -Wextra
+# CFLAGS	+=	-Werror
+RM		=	rm -r
 
-SRC		=	$(addsuffix .c, $(FILES))
-OBJ		= 	$(SRC:.c=.o)
+# If DEBUG env variable is set, compile with debugging symbols
+# and the compiler's address sanitizer
+ifdef DEBUG
+#	CFLAGS	+=	-g3 -fsanitize=address
+	CFLAGS	+=	-g3 -fsanitize=thread
+endif
 
-INCLUDE	=	philo.h
+INC_PATH	=	includes/
+SRC_PATH	=	srcs/
+OBJ_PATH	=	objs/
 
-INC_PAR	=	$(addprefix -I, $(INCLUDE))
+CONTROLLER	=	cleanup launch prep
+PHILO		=	philo thinking do_activity t_philo
+UTILS		=	print safe_atoi input threads
+
+CONTROLLER		:=	$(addprefix controller/, $(CONTROLLER))
+PHILO		:=	$(addprefix philo/, $(PHILO))
+UTILS		:=	$(addprefix utils/, $(UTILS))
 
 
-CC 		=	gcc
-# CFLAGS	=	-Wall -Werror -Wextra
-CFLAGS	=	-g -pthread
-# CFLAGS	=	-S
-RM		=	rm -f
+FILES		=	main $(CONTROLLER) $(PHILO) $(UTILS)
 
-.c.o :
-		$(CC) $(CFLAGS) -c $< -o $(@)
+SRCS		=	$(addprefix $(SRC_PATH), $(addsuffix .c, $(FILES)))
+OBJS		=	$(addprefix $(OBJ_PATH), $(addsuffix .o, $(FILES)))
+INCS		=	$(addprefix -I, $(INC_PATH))
 
-all : $(NAME)
+all : format_compiling $(NAME)
 
-$(NAME) : $(OBJ)
-		$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(INC_PAR)
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	@mkdir -p $(@D)
+#	@printf "$(GREEN) compiling ..$(GREY) $@$ $(RESET)$(JMP_STRT)"
+	@printf "$(JMP_UP)\e[14C$(GREY) $@ $(RESET)                             \n"
+	@$(CC) $(CFLAGS) -c $(INCS) -o $@ $<
+#	@printf "$(JMP_UP)$(JMP_UP)"
+
+$(NAME) : $(OBJS)
+	@printf "$(YELLOW).. linking$(RESET)\n"
+	@$(CC) $(CFLAGS) $(OBJS) -pthread $(INCS) -o $@
 
 bonus :
 	@echo "no bonus :("
 
 clean :
-	$(RM) $(OBJ)
+	@$(RM) $(OBJS) 2>/dev/null && printf "$(BLUE).. removed objects\n$(RESET)" || true
 
 fclean : clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME) 2>/dev/null && printf "$(BLUE).. removed $(NAME) binary\n$(RESET)" || true
 
 re : fclean all
+
+format_compiling :
+	@printf "$(GREEN).. compiling : $(RESET)\n"
+
+norm :
+	@printf "\n$(MAGENTA)checking the norminette ... "
+	@norminette 1>/dev/null && printf "$(GREEN)OK" || printf "$(RED)KO" ; printf "$(RESET)\n"
 
 .PHONY : all re clean fclean bonus
 
 # .SILENT:
+
+MANDETORY_FUNCS	=	memset                \
+					printf                \
+					malloc                \
+					free                  \
+					write                 \
+					usleep                \
+					gettimeofday          \
+					pthread_create        \
+					pthread_detach        \
+					pthread_join          \
+					pthread_mutex_init    \
+					pthread_mutex_destroy \
+					pthread_mutex_lock    \
+					pthread_mutex_unlock  \
+
+BONUS_FUNCS		=	memset                \
+					printf                \
+					malloc                \
+					free                  \
+					write                 \
+					fork                  \
+					kill                  \
+					exit                  \
+					pthread_create        \
+					pthread_detach        \
+					pthread_join          \
+					usleep                \
+					gettimeofday          \
+					waitpid               \
+					sem_open              \
+					sem_close             \
+					sem_post              \
+					sem_wait              \
+					sem_unlink            \
