@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:55:22 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 17:04:19 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:56:57 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int		try_reserve(pthread_mutex_t *m, int *thing);
 int		try_return(pthread_mutex_t *m, int *thing);
 long long ret_time_in_ms(void);
 int	get_mutex_state(pthread_mutex_t *m, int *thing);
+int	check_death(t_philo *p);
 
 #endif /* philo */

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:57:23 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 23:12:04 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:52:54 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ int	prep_all_philos(t_app *d)
 	i = d->args[e_num_philos];
 	d->philo_table = malloc(sizeof(t_philo) * d->args[e_num_philos]);
 	if (d->philo_table == NULL)
+		return (FATAL_ERROR);
+	d->death_state = 0;
+	if (pthread_mutex_init(&d->death_lock, NULL))
 		return (FATAL_ERROR);
 	to_left = NULL;
 	while (--i >= 0)
@@ -41,7 +44,9 @@ static int	prep_philo(t_philo *current, int id, t_app *d, t_philo *left)
 					.sleep_time=d->args[e_time_to_sleep],
 					.time_to_die=d->args[e_time_to_die],
 					.meals_left=d->args[e_n_of_meals],
-					.to_left=left}))
+					.to_left=left,
+					.death_state=&(d->death_state),
+					.death_lock=&(d->death_lock)}))
 		return (FATAL_ERROR);
 	return (0);
 }

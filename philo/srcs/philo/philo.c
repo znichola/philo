@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 21:03:49 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 15:43:00 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 18:51:00 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	*routine(void *philo)
 
 static int	sleeping(t_philo *p)
 {
+	if (check_death(p))
+		return (1);
 	print_log(p->id_number, e_msg_is_sleeping);
 	return (do_activity(p, p->sleep_time));
 }

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:51:14 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 17:39:11 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:53:19 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ static int	init_mutexes(t_philo *p)
 {
 	if (pthread_mutex_init(&p->fork_lock, NULL))
 		return (FATAL_ERROR);
-	if (pthread_mutex_init(&p->death_lock, NULL))
-	{
-		pthread_mutex_destroy(&p->fork_lock);
-		return (FATAL_ERROR);
-	}
+	// if (pthread_mutex_init(&p->death_lock, NULL))
+	// {
+	// 	pthread_mutex_destroy(&p->fork_lock);
+	// 	return (FATAL_ERROR);
+	// }
 	// if (pthread_mutex_init(&p->death_log_lock, NULL))
 	// {
 	// 	pthread_mutex_destroy(&p->fork_lock);

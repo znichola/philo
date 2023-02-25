@@ -6,16 +6,15 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 12:19:17 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 17:36:37 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 19:35:43 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-#define SLEEP_CHUNK 4
+#define SLEEP_CHUNK 7
 
 static int	sleep_chunk(t_philo *p, int sleep_in_ms);
-static int	check_death(t_philo *p);
 
 int	do_activity(t_philo *p, int sleep_in_ms)
 {
@@ -34,30 +33,27 @@ int	do_activity(t_philo *p, int sleep_in_ms)
 
 static int	sleep_chunk(t_philo *p, int sleep_in_ms)
 {
-	if (check_death(p))
-		return (1);
+	// if (check_death(p))
+	// 	return (1);
 	usleep(sleep_in_ms * 1000);
-	return (0);
+	// return (0);
+	return (check_death(p));
 }
 
-static int	check_death(t_philo *p)
+/*
+	returns 1 if we are dead
+ */
+int	check_death(t_philo *p)
 {
 	long long	meal_time_diff;
 
 	meal_time_diff = ret_time_in_ms() - p->last_meal_time;
-	if (get_mutex_state(&p->to_left->death_lock, &p->to_left->death_state))
-	{
-		try_reserve(&p->death_lock, &p->death_state);
+	if (get_mutex_state(p->death_lock, p->death_state))
 		return (1);
-	}
 	if (meal_time_diff > p->time_to_die)
 	{
-		try_reserve(&p->death_lock, &p->death_state);
-		try_reserve(&p->to_left->death_lock, &p->to_left->death_state);
-		// if (try_reserve(&p->death_log_lock, &p->death_log_state))
-		// {
-		print_log(p->id_number, e_msg_is_dead);
-		// }
+		if (try_reserve(p->death_lock, p->death_state))
+			print_log(p->id_number, e_msg_is_dead);
 		return (1);
 	}
 	return (0);
