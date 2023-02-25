@@ -6,13 +6,13 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 12:19:17 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 19:35:43 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:18:36 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-#define SLEEP_CHUNK 7
+#define SLEEP_CHUNK 13
 
 static int	sleep_chunk(t_philo *p, int sleep_in_ms);
 
