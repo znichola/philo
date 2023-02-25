@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:55:22 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 15:39:54 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:04:19 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int      wait_all_philos(t_app *d);
 int	prep_all_philos(t_app *d);
 int	thinking_and_eating(t_philo *p);
 int		do_activity(t_philo *p, int sleep_in_ms);
-int		launch_deathtimer(pthread_t *death_timer, t_philo *p);
 void	give_back(pthread_mutex_t *m, int *thing);
 int		try_reserve(pthread_mutex_t *m, int *thing);
 int		try_return(pthread_mutex_t *m, int *thing);

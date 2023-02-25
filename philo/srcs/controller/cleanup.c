@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:55:26 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 01:20:17 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:30:40 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ void	cleanup_philos(t_app *d)
 
 	i = d->args[e_num_philos];
 	while (--i >= 0)
+	{
 		pthread_mutex_destroy(&d->philo_table[i].fork_lock);
+		pthread_mutex_destroy(&d->philo_table[i].death_lock);
+		// pthread_mutex_destroy(&d->philo_table[i].death_log_lock);
+	}
 	free(d->philo_table);
 }

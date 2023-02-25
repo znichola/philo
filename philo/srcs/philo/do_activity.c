@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 12:19:17 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 16:14:42 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:36:37 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,17 @@ static int	check_death(t_philo *p)
 	meal_time_diff = ret_time_in_ms() - p->last_meal_time;
 	if (get_mutex_state(&p->to_left->death_lock, &p->to_left->death_state))
 	{
-		if (!try_reserve(&p->death_lock, &p->death_state))
-			printf("we should be the only ones to set the death time\n");
+		try_reserve(&p->death_lock, &p->death_state);
 		return (1);
 	}
 	if (meal_time_diff > p->time_to_die)
 	{
+		try_reserve(&p->death_lock, &p->death_state);
 		try_reserve(&p->to_left->death_lock, &p->to_left->death_state);
-		if (try_reserve(&p->death_lock, &p->death_state))
-		{
-			print_log(p->id_number, e_msg_is_dead);
-		}
+		// if (try_reserve(&p->death_log_lock, &p->death_log_state))
+		// {
+		print_log(p->id_number, e_msg_is_dead);
+		// }
 		return (1);
 	}
 	return (0);
