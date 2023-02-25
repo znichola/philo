@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:51:14 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 20:08:12 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:24:26 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	philo_factory(t_philo *p, t_philo *blueprint)
 	p->fork_state = 0;
 	p->death_state = blueprint->death_state;
 	p->death_lock = blueprint->death_lock;
-	// p->death_log_state = 0;
 	p->last_meal_time = ret_time_in_ms();
 	if (init_mutexes(p))
 		return (FATAL_ERROR);
@@ -40,6 +39,9 @@ static int	init_mutexes(t_philo *p)
 {
 	if (pthread_mutex_init(&p->fork_lock, NULL))
 		return (FATAL_ERROR);
+	return (0);
+}
+
 	// if (pthread_mutex_init(&p->death_lock, NULL))
 	// {
 	// 	pthread_mutex_destroy(&p->fork_lock);
@@ -57,5 +59,3 @@ static int	init_mutexes(t_philo *p)
 	// 	pthread_mutex_destroy(&p->death_lock);
 	// 	return (FATAL_ERROR);
 	// }
-	return (0);
-}

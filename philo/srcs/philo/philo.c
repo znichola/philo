@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 21:03:49 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 18:51:00 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:42:36 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*routine(void *philo)
 {
 	t_philo		*me;
 
-	me = (t_philo*)philo;
+	me = (t_philo *)philo;
 	while (me->meals_left > 0 || me->meals_left == -1)
 	{
 		if (thinking_and_eating(me))

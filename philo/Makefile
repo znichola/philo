@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 22:18:31 by znichola          #+#    #+#              #
-#    Updated: 2023/02/25 19:48:00 by znichola         ###   ########.fr        #
+#    Updated: 2023/02/26 00:04:41 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,17 +39,15 @@ SRC_PATH	=	srcs/
 OBJ_PATH	=	objs/
 
 CONTROLLER	=	cleanup launch prep
-PHILO		=	philo thinking do_activity
-STRUCTS		=	t_philo
-UTILS		=	debug print safe_atoi input threads
+PHILO		=	philo thinking do_activity t_philo
+UTILS		=	print safe_atoi input threads
 
 CONTROLLER		:=	$(addprefix controller/, $(CONTROLLER))
 PHILO		:=	$(addprefix philo/, $(PHILO))
-STRUCTS		:=	$(addprefix structs/, $(STRUCTS))
 UTILS		:=	$(addprefix utils/, $(UTILS))
 
 
-FILES		=	main $(CONTROLLER) $(PHILO) $(STRUCTS) $(UTILS)
+FILES		=	main $(CONTROLLER) $(PHILO) $(UTILS)
 
 SRCS		=	$(addprefix $(SRC_PATH), $(addsuffix .c, $(FILES)))
 OBJS		=	$(addprefix $(OBJ_PATH), $(addsuffix .o, $(FILES)))
@@ -82,6 +80,9 @@ re : fclean all
 format_compiling :
 	@printf "$(GREEN).. compiling : $(RESET)\n"
 
+norm :
+	@printf "\n$(MAGENTA)checking the norminette ... "
+	@norminette 1>/dev/null && printf "$(GREEN)OK" || printf "$(RED)KO" ; printf "$(RESET)\n"
 
 .PHONY : all re clean fclean bonus
 

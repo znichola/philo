@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 12:19:17 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 23:18:36 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:27:46 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ int	do_activity(t_philo *p, int sleep_in_ms)
 
 static int	sleep_chunk(t_philo *p, int sleep_in_ms)
 {
-	// if (check_death(p))
-	// 	return (1);
 	usleep(sleep_in_ms * 1000);
-	// return (0);
 	return (check_death(p));
 }
 

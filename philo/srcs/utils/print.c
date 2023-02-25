@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 16:01:12 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 13:09:31 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:44:30 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,20 @@ void	print_philo(t_philo *p)
 {
 	if (p == NULL)
 		return ;
-	printf("thread:%p\n", (void*)p->my_thread);
+	printf("thread:%p\n", (void *)p->my_thread);
 	printf("    id:%-3d   die_time:%-5d\n", p->id_number, p->time_to_die);
 	printf(" meals:%-3d   eat_time:%-5d\n", p->meals_left, p->eat_time);
 	printf("  dead:%-3d sleep_time:%-5d\n", p->time_to_die, p->sleep_time);
 	printf("\n");
 }
 
-long long ret_time_in_ms(void)
+long long	ret_time_in_ms(void)
 {
 	struct timeval	now;
 	long long		ret;
 
-	gettimeofday(&now,NULL);
-	ret = ((long long)now.tv_sec)*1000;
-	ret += ((long long)now.tv_usec)/1000;
+	gettimeofday(&now, NULL);
+	ret = ((long long)now.tv_sec) * 1000;
+	ret += ((long long)now.tv_usec) / 1000;
 	return (ret);
 }

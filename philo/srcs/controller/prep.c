@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:57:23 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 17:52:54 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:41:59 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,18 @@ int	prep_all_philos(t_app *d)
 
 static int	prep_philo(t_philo *current, int id, t_app *d, t_philo *left)
 {
-	if (philo_factory(current, &(t_philo){.id_number=id,
-					.eat_time=d->args[e_time_to_eat],
-					.sleep_time=d->args[e_time_to_sleep],
-					.time_to_die=d->args[e_time_to_die],
-					.meals_left=d->args[e_n_of_meals],
-					.to_left=left,
-					.death_state=&(d->death_state),
-					.death_lock=&(d->death_lock)}))
+	int	ret;
+
+	ret = philo_factory(current, &(t_philo){
+			.id_number = id,
+			.eat_time = d->args[e_time_to_eat],
+			.sleep_time = d->args[e_time_to_sleep],
+			.time_to_die = d->args[e_time_to_die],
+			.meals_left = d->args[e_n_of_meals],
+			.to_left = left,
+			.death_state = &(d->death_state),
+			.death_lock = &(d->death_lock)});
+	if (ret)
 		return (FATAL_ERROR);
 	return (0);
 }
@@ -54,7 +58,7 @@ static int	prep_philo(t_philo *current, int id, t_app *d, t_philo *left)
 static void	set_left(t_app *d)
 {
 	t_philo	*last;
-	int	i;
+	int		i;
 
 	i = d->args[e_num_philos];
 	last = &d->philo_table[0];

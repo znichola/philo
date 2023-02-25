@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 14:07:52 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 23:27:33 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:43:33 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	validate_inputs(int ac, char **av, int args[5])
 		printf("n_philos time_to_die time_to_eat time_to_sleep [n_of_meals]\n");
 		return (1);
 	}
-	if(ft_safe_atoi(&args[0], av[1]) + ft_safe_atoi(&args[1], av[2])
+	if (ft_safe_atoi(&args[0], av[1]) + ft_safe_atoi(&args[1], av[2])
 		+ ft_safe_atoi(&args[2], av[3]) + ft_safe_atoi(&args[3], av[4]))
 	{
 		printf("please use valid int32 numbers\n");
