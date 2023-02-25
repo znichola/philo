@@ -6,13 +6,11 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 16:01:12 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 23:55:07 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 13:09:31 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-static long long ret_time_in_ms(void);
 
 void	print_log(int id, int msg)
 {
@@ -40,7 +38,7 @@ void	print_philo(t_philo *p)
 	printf("\n");
 }
 
-static long long ret_time_in_ms(void)
+long long ret_time_in_ms(void)
 {
 	struct timeval	now;
 	long long		ret;

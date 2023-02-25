@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 00:43:57 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 00:44:30 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 12:56:09 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,20 @@ int	try_return(pthread_mutex_t *m, int *thing)
 		*thing = 0;
 		ret = 1;
 	}
+	pthread_mutex_unlock(m);
+	return (ret);
+}
+
+/*
+	return the state of the mutex
+ */
+int	get_mutex_state(pthread_mutex_t *m, int *thing)
+{
+	int	ret;
+
+	ret = 0;
+	pthread_mutex_lock(m);
+	ret = *thing;
 	pthread_mutex_unlock(m);
 	return (ret);
 }

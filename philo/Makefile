@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 22:18:31 by znichola          #+#    #+#              #
-#    Updated: 2023/02/25 01:16:19 by znichola         ###   ########.fr        #
+#    Updated: 2023/02/25 15:44:26 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ SRC_PATH	=	srcs/
 OBJ_PATH	=	objs/
 
 CONTROLLER	=	cleanup wait launch prep
-PHILO		=	philo init_philo thinking death
+PHILO		=	philo init_philo thinking do_activity
 STRUCTS		=	t_philo
 UTILS		=	debug print safe_atoi input threads
 

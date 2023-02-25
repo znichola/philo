@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:55:41 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 00:04:19 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 12:43:05 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	main(int argc, char **argv)
 {
-
 	t_app	data;
 
 	if (validate_inputs(argc, argv, data.args))
