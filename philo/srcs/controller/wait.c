@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 16:19:15 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 17:50:07 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 01:20:05 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	wait_all_philos(t_app *d)
 			printf("failed to join thread #%d\n", i);
 		// else
 		// 	printf("joined thread #%d\n", i);
-
 	}
 	return (0);
 }

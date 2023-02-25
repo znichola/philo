@@ -1,41 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   death.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/29 21:03:49 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 01:19:28 by znichola         ###   ########.fr       */
+/*   Created: 2023/02/25 00:12:00 by znichola          #+#    #+#             */
+/*   Updated: 2023/02/25 01:17:35 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* functions a philo thread can do */
-
 #include "philo.h"
 
-static void	sleeping(t_philo *p);
+static void	*death_routine(void *philo);
 
-void	*routine(void *philo)
+void	rest(t_philo *p, int sleep_in_ms)
 {
-	t_philo		*me;
-	pthread_t	death_timer;
-
-	me = (t_philo*)philo;
-	// if (launch_deathtimer(&death_timer, me))
-	// 	return (NULL);
-	while (me->meals_left > 0 || me->meals_left == -1)
-	{
-		thinking_and_eating(me);
-		sleeping(me);
-	}
-	// pthread_join(death_timer, NULL);
-	print_log(me->id_number, e_msg_is_dead);
-	return (NULL);
+	// check for death during this long sleep
+	(void)p;
+	usleep(sleep_in_ms * 100);
 }
 
-static void	sleeping(t_philo *p)
+int	launch_deathtimer(pthread_t *death_timer, t_philo *p)
 {
-	print_log(p->id_number, e_msg_is_sleeping);
-	rest(p, p->sleep_time);
+	if (pthread_create(death_timer, NULL, death_routine, p))
+		return (FATAL_ERROR);
+	return (0);
+}
+
+static void	*death_routine(void *philo)
+{
+	t_philo		*me;
+
+	me = (t_philo*)philo;
+	while (1)
+	{
+		if (try_reserve(&me->ate_lock, &me->ate_state))
+			;
+	}
+	return (NULL);
 }

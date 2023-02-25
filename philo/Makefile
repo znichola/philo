@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 22:18:31 by znichola          #+#    #+#              #
-#    Updated: 2023/02/25 00:03:47 by znichola         ###   ########.fr        #
+#    Updated: 2023/02/25 01:16:19 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,9 @@ SRC_PATH	=	srcs/
 OBJ_PATH	=	objs/
 
 CONTROLLER	=	cleanup wait launch prep
-PHILO		=	philo init_philo thinking
+PHILO		=	philo init_philo thinking death
 STRUCTS		=	t_philo
-UTILS		=	debug print safe_atoi input sleep
+UTILS		=	debug print safe_atoi input threads
 
 CONTROLLER		:=	$(addprefix controller/, $(CONTROLLER))
 PHILO		:=	$(addprefix philo/, $(PHILO))

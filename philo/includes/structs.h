@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:01:20 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/24 22:41:18 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/25 00:30:20 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ typedef struct s_philo
 	int				meals_left;
 	int				fork_state;
 	pthread_mutex_t	fork_lock;
+	int				death_state;
+	pthread_mutex_t	death_lock;
+	int				ate_state;
+	pthread_mutex_t	ate_lock;
 	struct s_philo	*to_left;
 }	t_philo;
 
