@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 12:19:17 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/27 15:27:02 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:41:33 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,40 @@ int	do_activity(t_philo *p, int sleep_in_ms)
 
 static int	sleep_chunk(t_philo *p, int sleep_in_ms)
 {
-	long long	start_sleep;
+	long long	end_sleep;
+	long long	curent_ms;
 
-	// printf("\n");
-	// print_log(p->id_number, 42);
-
-	// printf("%lld %d for %d-%d\n", ret_time_in_ms(), p->id_number+1, sleep_in_ms, p->over_slept_ms);
-	start_sleep = ret_time_in_ms();
-	if (usleep((sleep_in_ms - p->over_slept_ms) * 1000))
-		printf("usleep error\n");
-
-	p->over_slept_ms = (long long)(ret_time_in_ms() - start_sleep) - (sleep_in_ms - p->over_slept_ms);
-	if (p->over_slept_ms < 0)
+	curent_ms = ret_time_in_ms();
+	end_sleep = curent_ms + sleep_in_ms;
+	while (curent_ms < end_sleep)
 	{
-		printf("0 0 at %d\n", p->over_slept_ms);
-		p->over_slept_ms = 0;
+		usleep(100);
+		curent_ms = ret_time_in_ms();
 	}
-	// print_log(p->id_number, 42);
 	return (check_death(p));
 }
+
+// static int	sleep_chunk(t_philo *p, int sleep_in_ms)
+// {
+// 	long long	start_sleep;
+
+// 	// printf("\n");
+// 	// print_log(p->id_number, 42);
+
+// 	// printf("%lld %d for %d-%d\n", ret_time_in_ms(), p->id_number+1, sleep_in_ms, p->over_slept_ms);
+// 	start_sleep = ret_time_in_ms();
+// 	if (usleep((sleep_in_ms - p->over_slept_ms) * 1000))
+// 		printf("usleep error\n");
+
+// 	p->over_slept_ms = (long long)(ret_time_in_ms() - start_sleep) - (sleep_in_ms - p->over_slept_ms);
+// 	if (p->over_slept_ms < 0)
+// 	{
+// 		printf("0 0 at %d\n", p->over_slept_ms);
+// 		p->over_slept_ms = 0;
+// 	}
+// 	// print_log(p->id_number, 42);
+// 	return (check_death(p));
+// }
 
 /*
 	returns 1 if we are dead
@@ -72,6 +87,7 @@ int	check_death(t_philo *p)
 			print_log(p->id_number, e_msg_is_dead);
 		return (1);
 	}
+	// usleep(10);
 	return (0);
 }
 
