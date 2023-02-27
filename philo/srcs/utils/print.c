@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 16:01:12 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 23:44:30 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:17:43 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	print_log(int id, int msg)
 		printf("%lld %d is thinking\n", ret_time_in_ms(), id);
 	else if (msg == e_msg_is_dead)
 		printf("%lld %d died\n", ret_time_in_ms(), id);
+	else if (msg == 42)
+		printf("%lld %d custom  - -            <------\n", ret_time_in_ms(), id);
 }
 
 void	print_philo(t_philo *p)
@@ -44,7 +46,7 @@ long long	ret_time_in_ms(void)
 	long long		ret;
 
 	gettimeofday(&now, NULL);
-	ret = ((long long)now.tv_sec) * 1000;
-	ret += ((long long)now.tv_usec) / 1000;
+	ret = ((long long)now.tv_sec) * 1000 + ((long long)now.tv_usec) / 1000;
+	// ret += ((long long)now.tv_usec) / 1000;
 	return (ret);
 }
