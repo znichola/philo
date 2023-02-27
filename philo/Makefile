@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 22:18:31 by znichola          #+#    #+#              #
-#    Updated: 2023/02/27 15:35:04 by znichola         ###   ########.fr        #
+#    Updated: 2023/02/27 22:31:14 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,8 @@ SRC_PATH	=	srcs/
 OBJ_PATH	=	objs/
 
 CONTROLLER	=	cleanup launch prep
-PHILO		=	philo do_activity t_philo thinking sleeping eating
-UTILS		=	print safe_atoi input threads
+PHILO		=	routine do_activity t_philo thinking sleeping eating
+UTILS		=	print safe_atoi input threads time
 
 CONTROLLER		:=	$(addprefix controller/, $(CONTROLLER))
 PHILO		:=	$(addprefix philo/, $(PHILO))

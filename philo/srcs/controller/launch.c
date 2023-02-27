@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:48:02 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/27 18:25:29 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/27 23:29:38 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,16 @@ int	launch_all_philos(t_app *d)
 		if (launch_philo(d->philo_table + i))
 			return (FATAL_ERROR);
 	}
-	pthread_mutex_lock(&d->death_state);
+	pthread_mutex_lock(&d->death_lock);
+	d->death_state = 0;
+	get_time_since_start();
+	pthread_mutex_unlock(&d->death_lock);
 	return (0);
 }
 
 static int	launch_philo(t_philo *p)
 {
-	p->last_meal_time = ret_time_in_ms();
+	p->last_meal_time = get_time_in_ms();
 	if (pthread_create(&p->my_thread, NULL, &routine, p))
 		return (FATAL_ERROR);
 	return (0);

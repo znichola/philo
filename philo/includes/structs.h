@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:01:20 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/27 15:22:19 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/27 22:53:18 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ typedef struct s_philo
 	pthread_mutex_t	*death_lock;
 	long long		last_meal_time;
 	int				over_slept_ms;
-	int				death_log_state;
-	pthread_mutex_t	death_log_lock;
 	struct s_philo	*to_left;
 }	t_philo;
 

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 12:19:17 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/27 17:41:33 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/27 22:14:51 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ static int	sleep_chunk(t_philo *p, int sleep_in_ms)
 	long long	end_sleep;
 	long long	curent_ms;
 
-	curent_ms = ret_time_in_ms();
+	curent_ms = get_time_in_ms();
 	end_sleep = curent_ms + sleep_in_ms;
 	while (curent_ms < end_sleep)
 	{
 		usleep(100);
-		curent_ms = ret_time_in_ms();
+		curent_ms = get_time_in_ms();
 	}
 	return (check_death(p));
 }
@@ -80,7 +80,7 @@ int	check_death(t_philo *p)
 
 	if (get_mutex_state(p->death_lock, p->death_state))
 		return (1);
-	meal_time_diff = ret_time_in_ms() - p->last_meal_time;
+	meal_time_diff = get_time_in_ms() - p->last_meal_time;
 	if (meal_time_diff > p->time_to_die)
 	{
 		if (try_reserve(p->death_lock, p->death_state))

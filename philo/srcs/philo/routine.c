@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 21:03:49 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/27 18:09:59 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/27 22:55:34 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	*routine(void *philo)
 	me = (t_philo *)philo;
 	while(get_mutex_state(me->death_lock, me->death_state) == 2)
 		usleep(100);
+	me->last_meal_time = get_time_in_ms();
 	while (me->meals_left > 0 || me->meals_left == -1)
 	{
 		if (thinking_and_eating(me))
