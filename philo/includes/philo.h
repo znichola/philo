@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:55:22 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 23:33:02 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:34:46 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ int			do_activity(t_philo *p, int sleep_in_ms);
 
 int			check_death(t_philo *p);
 void		*routine(void *philo);
+
+int			sleeping(t_philo *p);
+int			eating(t_philo *p);
 
 int			philo_factory(t_philo *p, t_philo *blueprint);
 

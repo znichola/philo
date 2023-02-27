@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   eating.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/29 21:03:49 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/27 15:35:15 by znichola         ###   ########.fr       */
+/*   Created: 2023/02/27 15:34:03 by znichola          #+#    #+#             */
+/*   Updated: 2023/02/27 15:34:44 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* functions a philo thread can do */
-
 #include "philo.h"
 
-// static void	*announce_death(t_philo *p);
-
-void	*routine(void *philo)
+int	eating(t_philo *p)
 {
-	t_philo		*me;
-
-	me = (t_philo *)philo;
-	while (me->meals_left > 0 || me->meals_left == -1)
-	{
-		if (thinking_and_eating(me))
-			return (NULL);
-		if (sleeping(me))
-			return (NULL);
-	}
-	return (NULL);
+	// if (check_death(p))
+	// 	return (1);
+	print_log(p->id_number, e_msg_taken_fork);
+	print_log(p->id_number, e_msg_taken_fork);
+	print_log(p->id_number, e_msg_is_eating);
+	p->last_meal_time = ret_time_in_ms();
+	if (p->meals_left != -1)
+		p->meals_left -= 1;
+	return (do_activity(p, p->eat_time));
 }
-
-// static void	*announce_death(t_philo *p)
-// {
-// 	print_log(p->id_number, e_msg_is_dead);
-// 	return (NULL);
-// }
