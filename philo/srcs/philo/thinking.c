@@ -6,11 +6,38 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 22:35:51 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/27 23:33:56 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/28 00:17:44 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+// int	thinking_and_eating(t_philo *p)
+// {
+// 	int	ret;
+
+// 	ret = 0;
+// 	// if (check_death(p))
+// 	// 	return (1);
+// 	print_log(p->id_number, e_msg_is_thinking);
+// 	while (1)
+// 	{
+// 		if (check_death(p))
+// 			return (1);
+// 		if (try_reserve(&p->fork_lock, &p->fork_state))
+// 		{
+// 			if (try_reserve(&p->to_left->fork_lock, &p->to_left->fork_state))
+// 			{
+// 				ret = eating(p);
+// 				give_back(&p->to_left->fork_lock, &p->to_left->fork_state);
+// 				give_back(&p->fork_lock, &p->fork_state);
+// 				break ;
+// 			}
+// 			give_back(&p->fork_lock, &p->fork_state);
+// 		}
+// 	}
+// 	return (ret);
+// }
 
 int	thinking_and_eating(t_philo *p)
 {
@@ -25,15 +52,18 @@ int	thinking_and_eating(t_philo *p)
 		if (check_death(p))
 			return (1);
 		if (try_reserve(&p->fork_lock, &p->fork_state))
+			break ;
+	}
+	while (1)
+	{
+		if (check_death(p))
+			return (1);
+		if (try_reserve(&p->to_left->fork_lock, &p->to_left->fork_state))
 		{
-			if (try_reserve(&p->to_left->fork_lock, &p->to_left->fork_state))
-			{
-				ret = eating(p);
-				give_back(&p->to_left->fork_lock, &p->to_left->fork_state);
-				give_back(&p->fork_lock, &p->fork_state);
-				break ;
-			}
+			ret = eating(p);
+			give_back(&p->to_left->fork_lock, &p->to_left->fork_state);
 			give_back(&p->fork_lock, &p->fork_state);
+			break ;
 		}
 	}
 	return (ret);
