@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 22:18:31 by znichola          #+#    #+#              #
-#    Updated: 2023/02/28 09:06:16 by znichola         ###   ########.fr        #
+#    Updated: 2023/02/28 09:41:53 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ CONTROLLER	=	cleanup launch prep
 PHILO		=	routine do_activity t_philo thinking sleeping eating
 UTILS		=	print safe_atoi input threads time
 
-CONTROLLER		:=	$(addprefix controller/, $(CONTROLLER))
+CONTROLLER	:=	$(addprefix controller/, $(CONTROLLER))
 PHILO		:=	$(addprefix philo/, $(PHILO))
 UTILS		:=	$(addprefix utils/, $(UTILS))
 
@@ -81,12 +81,13 @@ fclean : clean
 re : fclean all
 
 format_compiling :
+	@printf "$(MAGENTA).. cflags $(GREY)$(CFLAGS)$(RESET)\n"
 	@printf "$(GREEN).. compiling : $(RESET)\n"
 
 rendu : re
-	@printf "$(MAGENTA)checking the norminette ... "
+	@printf "$(MAGENTA).. checking the norminette ... "
 	@norminette 1>/dev/null && printf "$(GREEN)OK" || printf "$(RED)KO" ; printf "$(RESET)\n"
-	@printf "$(MAGENTA)flags used ...              $(GREY)$(CFLAGS)$(RESET)\n"
+
 .PHONY : all re clean fclean bonus
 
 # .SILENT:
