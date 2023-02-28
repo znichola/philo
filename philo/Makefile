@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 22:18:31 by znichola          #+#    #+#              #
-#    Updated: 2023/02/27 22:31:14 by znichola         ###   ########.fr        #
+#    Updated: 2023/02/28 09:06:16 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,14 +24,17 @@ NAME	=	philo
 
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra
-# CFLAGS	+=	-Werror
+CFLAGS	+=	-Werror
 RM		=	rm -r
 
 # If DEBUG env variable is set, compile with debugging symbols
 # and the compiler's address sanitizer
 ifdef DEBUG
-#	CFLAGS	+=	-g3 -fsanitize=address
+	CFLAGS	+=	-g3 -fsanitize=address
+else
+ifdef DEBUGT
 	CFLAGS	+=	-g3 -fsanitize=thread
+endif
 endif
 
 INC_PATH	=	includes/
@@ -80,10 +83,10 @@ re : fclean all
 format_compiling :
 	@printf "$(GREEN).. compiling : $(RESET)\n"
 
-norm :
-	@printf "\n$(MAGENTA)checking the norminette ... "
+rendu : re
+	@printf "$(MAGENTA)checking the norminette ... "
 	@norminette 1>/dev/null && printf "$(GREEN)OK" || printf "$(RED)KO" ; printf "$(RESET)\n"
-
+	@printf "$(MAGENTA)flags used ...              $(GREY)$(CFLAGS)$(RESET)\n"
 .PHONY : all re clean fclean bonus
 
 # .SILENT:
