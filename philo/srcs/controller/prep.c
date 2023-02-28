@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:57:23 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 23:41:59 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/27 18:07:10 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	prep_all_philos(t_app *d)
 	d->philo_table = malloc(sizeof(t_philo) * d->args[e_num_philos]);
 	if (d->philo_table == NULL)
 		return (FATAL_ERROR);
-	d->death_state = 0;
+	d->death_state = 2;
 	if (pthread_mutex_init(&d->death_lock, NULL))
 		return (FATAL_ERROR);
 	to_left = NULL;

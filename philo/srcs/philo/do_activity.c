@@ -6,13 +6,13 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 12:19:17 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/25 23:27:46 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/28 01:11:19 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-#define SLEEP_CHUNK 13
+#define SLEEP_CHUNK 8
 
 static int	sleep_chunk(t_philo *p, int sleep_in_ms);
 
@@ -27,15 +27,50 @@ int	do_activity(t_philo *p, int sleep_in_ms)
 			return (1);
 	}
 	if (sleep_in_ms % SLEEP_CHUNK)
+	{
 		return (sleep_chunk(p, sleep_in_ms % SLEEP_CHUNK));
+	}
 	return (0);
 }
 
 static int	sleep_chunk(t_philo *p, int sleep_in_ms)
 {
-	usleep(sleep_in_ms * 1000);
+	long long	end_sleep;
+	long long	curent_ms;
+
+	curent_ms = get_time_in_ms();
+	end_sleep = curent_ms + sleep_in_ms;
+	while (curent_ms < end_sleep)
+	{
+		usleep(100);
+		curent_ms = get_time_in_ms();
+	}
 	return (check_death(p));
 }
+
+// static int	sleep_chunk(t_philo *p, int sleep_in_ms)
+// {
+// 	long long	start_sleep;
+
+// 	// printf("\n");
+// 	// print_log(p->id_number, 42);
+
+// 	// printf("%lld %d for %d-%d\n",
+// ret_time_in_ms(), p->id_number+1, sleep_in_ms, p->over_slept_ms);
+// 	start_sleep = ret_time_in_ms();
+// 	if (usleep((sleep_in_ms - p->over_slept_ms) * 1000))
+// 		printf("usleep error\n");
+
+// 	p->over_slept_ms = (long long)(ret_time_in_ms() - start_sleep)
+// - (sleep_in_ms - p->over_slept_ms);
+// 	if (p->over_slept_ms < 0)
+// 	{
+// 		printf("0 0 at %d\n", p->over_slept_ms);
+// 		p->over_slept_ms = 0;
+// 	}
+// 	// print_log(p->id_number, 42);
+// 	return (check_death(p));
+// }
 
 /*
 	returns 1 if we are dead
@@ -44,9 +79,9 @@ int	check_death(t_philo *p)
 {
 	long long	meal_time_diff;
 
-	meal_time_diff = ret_time_in_ms() - p->last_meal_time;
 	if (get_mutex_state(p->death_lock, p->death_state))
 		return (1);
+	meal_time_diff = get_time_in_ms() - p->last_meal_time;
 	if (meal_time_diff > p->time_to_die)
 	{
 		if (try_reserve(p->death_lock, p->death_state))

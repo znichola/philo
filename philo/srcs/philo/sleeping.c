@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sleeping.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 11:55:41 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/27 22:15:45 by znichola         ###   ########.fr       */
+/*   Created: 2023/02/27 15:33:01 by znichola          #+#    #+#             */
+/*   Updated: 2023/02/28 00:50:27 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char **argv)
+int	sleeping(t_philo *p)
 {
-	t_app	data;
-
-	if (validate_inputs(argc, argv, data.args))
-		return (1);
-	if (prep_all_philos(&data) == FATAL_ERROR)
-		return (FATAL_ERROR);
-	if (launch_all_philos(&data) == FATAL_ERROR)
-		return (FATAL_ERROR);
-	wait_all_philos(&data);
-	cleanup_philos(&data);
-	return (0);
+	print_log(p->id_number, e_msg_is_sleeping);
+	return (do_activity(p, p->sleep_time));
 }
 
-/*
-	awk 'NR == 1 {origin = $1} {$1 = $1 - origin; print}'
- */
+	// print_log(p->id_number, 42);
+	// if (check_death(p))
+	// 	return (1);
