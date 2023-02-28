@@ -6,13 +6,13 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 12:19:17 by znichola          #+#    #+#             */
-/*   Updated: 2023/02/27 22:14:51 by znichola         ###   ########.fr       */
+/*   Updated: 2023/02/28 01:11:19 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-#define SLEEP_CHUNK 10
+#define SLEEP_CHUNK 8
 
 static int	sleep_chunk(t_philo *p, int sleep_in_ms);
 
@@ -30,7 +30,6 @@ int	do_activity(t_philo *p, int sleep_in_ms)
 	{
 		return (sleep_chunk(p, sleep_in_ms % SLEEP_CHUNK));
 	}
-	// p->over_slept_ms = 0;
 	return (0);
 }
 
@@ -56,12 +55,14 @@ static int	sleep_chunk(t_philo *p, int sleep_in_ms)
 // 	// printf("\n");
 // 	// print_log(p->id_number, 42);
 
-// 	// printf("%lld %d for %d-%d\n", ret_time_in_ms(), p->id_number+1, sleep_in_ms, p->over_slept_ms);
+// 	// printf("%lld %d for %d-%d\n",
+// ret_time_in_ms(), p->id_number+1, sleep_in_ms, p->over_slept_ms);
 // 	start_sleep = ret_time_in_ms();
 // 	if (usleep((sleep_in_ms - p->over_slept_ms) * 1000))
 // 		printf("usleep error\n");
 
-// 	p->over_slept_ms = (long long)(ret_time_in_ms() - start_sleep) - (sleep_in_ms - p->over_slept_ms);
+// 	p->over_slept_ms = (long long)(ret_time_in_ms() - start_sleep)
+// - (sleep_in_ms - p->over_slept_ms);
 // 	if (p->over_slept_ms < 0)
 // 	{
 // 		printf("0 0 at %d\n", p->over_slept_ms);
@@ -87,7 +88,6 @@ int	check_death(t_philo *p)
 			print_log(p->id_number, e_msg_is_dead);
 		return (1);
 	}
-	// usleep(10);
 	return (0);
 }
 
